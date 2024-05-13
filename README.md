@@ -20,6 +20,8 @@ Na parte da lista de tarefas, você pode:
 
 - Adicionar novas tarefas clicando no botão de adição (+) no canto inferior direito.
 - Remover tarefas clicando no botão "Fechar" ao lado de cada tarefa.
+
+  
 ![image](https://github.com/HugoDevSouza/onsen_Ui/assets/91148255/3eba1c42-9202-4786-8d2d-c798f10a3638)
 
 
