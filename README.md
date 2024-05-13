@@ -32,19 +32,6 @@ Na parte da lista de tarefas, você pode:
 - **HTML:** Para a estrutura.
 - **CSS:** Para o estilo.
 - **JavaScript:** Para a interatividade.
-- **Onsen UI:** Para uma interface bonita.
-
-O projeto é dividido em dois arquivos HTML: `index.html` para a lista de tarefas e `login.html` para o login. O JavaScript necessário está em cada arquivo HTML.
-
-Pra rodar o projeto, é só abrir os arquivos HTML em um navegador.
-
-### Autor
-
-Esse projeto foi feito por [autor](https://exemplo.com).
-
---- 
-
-Se precisar mudar algo, é só avisar!
+- **Onsen UI:** Framework para uma interface.
 
 
-![Uploading image.png…]()
