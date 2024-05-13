@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/onsenui/css/onsen-css-components.min.css"
+    />
+    <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+  </head>
+  <body>
+    <ons-page>
+      <ons-toolbar>
+        <div class="left">
+          <ons-back-button onclick="BackPage()"> Back </ons-back-button>
+        </div>
+        <div class="center">Lista de Tarefas</div>
+      
+      </ons-toolbar>
+
+      <ons-page id="tasks">
+        <ons-list id="task-list">
+          <ons-list-item>
+            Fazer compras
+            <ons-button modifier="quiet" onclick="removeTask(this)">
+              <ons-icon icon="md-close"></ons-icon>
+            </ons-button>
+          </ons-list-item>
+          <ons-list-item>
+            Estudar para o exame
+            <ons-button modifier="quiet" onclick="removeTask(this)">
+              <ons-icon icon="md-close"></ons-icon>
+            </ons-button>
+          </ons-list-item>
+          <ons-list-item>
+            Limpar o apartamento
+            <ons-button modifier="quiet" onclick="removeTask(this)">
+              <ons-icon icon="md-close"></ons-icon>
+            </ons-button>
+          </ons-list-item>
+        </ons-list>
+        <ons-input id="new-task" placeholder="Nova Tarefa" style="display: none;"></ons-input>
+        <div>
+            <ons-fab position="bottom right" onclick="showAlertToAddTask()">
+              <ons-icon icon="md-plus"></ons-icon> 
+            </ons-fab>
+          </div>
+      </ons-page>
+    </ons-page>
+    <script>
+      function showAlertToAddTask() {
+        ons.notification.prompt('Digite o nome da nova tarefa:', {
+          title: 'Adicionar Tarefa',
+          callback: function(name) {
+            if (name.trim() !== '') {
+              const newTaskInput = document.getElementById('new-task');
+              newTaskInput.value = name.trim();
+              newTaskInput.style.display = 'block';
+              addTask();
+            } else {
+              ons.notification.alert('Por favor, insira um nome de tarefa válido.');
+            }
+          }
+        });
+      }
+
+      function addTask() {
+        const newTaskInput = document.getElementById('new-task');
+        const newTaskName = newTaskInput.value.trim();
+        
+        if (newTaskName !== '') {
+          const list = document.getElementById('task-list');
+          const newListItem = document.createElement('ons-list-item');
+          newListItem.textContent = newTaskName;
+          const removeButton = document.createElement('ons-button');
+          removeButton.setAttribute('modifier', 'quiet');
+          removeButton.setAttribute('onclick', 'removeTask(this)');
+          removeButton.innerHTML = '<ons-icon icon="md-close"></ons-icon>';
+          newListItem.appendChild(removeButton);
+          list.appendChild(newListItem);
+          newTaskInput.value = ''; // Limpa o campo de entrada
+          newTaskInput.style.display = 'none'; // Esconde o campo de entrada novamente
+        } else {
+          ons.notification.alert('Por favor, insira um nome de tarefa válido.');
+        }
+      }
+
+      function removeTask(button) {
+        const listItem = button.parentNode;
+        listItem.remove();
+      }
+
+      function BackPage() {
+        window.location.href = 'index.html';
+      }
+    </script>
+  </body>
+</html>
